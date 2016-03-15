@@ -19,6 +19,7 @@ function init() {
 
 function handleButton() {
     getNumber();
+    clearNumber();
 }
 
 function getNumber() {
@@ -38,3 +39,11 @@ function getNumber() {
     });
 }
 
+function clearNumber() {
+    $('#clear').on('click', function() {
+        result = '0';
+        $('#screen').val(result);
+        number = [];
+        connector = '';
+    });
+}
