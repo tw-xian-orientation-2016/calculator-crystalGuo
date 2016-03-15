@@ -6,6 +6,7 @@ var connector;
 
 $(document).ready(function() {
     init();
+    handleButton();
 });
 
 function init() {
@@ -16,5 +17,24 @@ function init() {
     connector = '';
 }
 
+function handleButton() {
+    getNumber();
+}
 
+function getNumber() {
+    $('.number').on('click', function() {
+        if (result === '0') {
+            result = '';
+        }
+        result += $(this).html();
+        $('#screen').val(result);
+    });
+
+    $('#dot').on('click', function() {
+        if (result.indexOf('.') === -1) {
+            result += $(this).html();
+            $('#screen').val(result);
+        }
+    });
+}
 
