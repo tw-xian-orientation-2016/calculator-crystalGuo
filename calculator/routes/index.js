@@ -3,7 +3,13 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.send('index.html');
+});
+
+router.post('/negation', function (req, res) {
+  var number = parseFloat(req.body.number);
+  var negativeNumber = -number;
+  res.send('' + negativeNumber);
 });
 
 module.exports = router;
