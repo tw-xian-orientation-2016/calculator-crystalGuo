@@ -22,6 +22,10 @@ function handleButton() {
     clearNumber();
     setNegation();
     setPercent();
+    setSum();
+    setSub();
+    setMultiply();
+    setDiv();
 }
 
 function getNumber() {
@@ -72,4 +76,92 @@ function setPercent() {
         }
 
     });
+}
+
+function setSum() {
+    $('#sum').on('click', function() {
+        number.push(result);
+        result = '0';
+
+        if (connector != '' && number.length > 1) {
+            handleConnector(connector);
+        }
+
+        connector = $(this).html();
+    });
+}
+
+function setSub() {
+    $('#sub').on('click', function() {
+        number.push(result);
+        result = '0';
+
+        if (connector != '' && number.length > 1) {
+            handleConnector(connector);
+        }
+
+        connector = $(this).html();
+    });
+}
+
+function setMultiply() {
+    $('#multiply').on('click', function() {
+        number.push(result);
+        result = '0';
+
+        if (connector != '' && number.length > 1) {
+            handleConnector(connector);
+        }
+
+        connector = $(this).html();
+    });
+}
+
+function setDiv() {
+    $('#div').on('click', function() {
+        number.push(result);
+        result = '0';
+
+        if (connector != '' && number.length > 1) {
+            handleConnector(connector);
+        }
+
+        connector = $(this).html();
+    });
+}
+
+function handleConnector(connector) {
+    if (connector === '+') {
+        service.getSum(number, function(sum) {
+            result = sum;
+            $('#screen').val(result);
+            number = [];
+            number.push(result);
+            result = '';
+        });
+    } else if (connector === '-') {
+        service.getSub(number, function(sub) {
+            result = sub;
+            $('#screen').val(result);
+            number = [];
+            number.push(result);
+            result = '';
+        });
+    } else if (connector === '÷') {
+        service.getDiv(number, function(div) {
+            result = div;
+            $('#screen').val(result);
+            number = [];
+            number.push(result);
+            result = '';
+        });
+    } else if (connector === '×') {
+        service.getMultiply(number, function(multiply) {
+            result = multiply;
+            $('#screen').val(result);
+            number = [];
+            number.push(result);
+            result = '';
+        });
+    }
 }
