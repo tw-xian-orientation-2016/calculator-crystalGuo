@@ -13,3 +13,26 @@ Service.prototype.getPercent = function(number, callback) {
     });
 }
 
+Service.prototype.getSum = function(number, callback) {
+    $.post('/sum',  { number1: number[0], number2: number[1] }, function(result) {
+        callback(result);
+    });
+}
+
+Service.prototype.getSub = function(number, callback) {
+    $.post('/sub',  { number1: number[0], number2: number[1] }, function(result) {
+        callback(result);
+    });
+}
+
+Service.prototype.getMultiply = function(number, callback) {
+    $.post('/multiply',  { number1: number[0], number2: number[1] }, function(result) {
+        callback(result);
+    });
+}
+
+Service.prototype.getDiv = function(number, callback) {
+    $.post('/div',  { number1: number[0], number2: number[1] }, function(result) {
+        callback(result);
+    });
+}
