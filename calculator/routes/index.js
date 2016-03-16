@@ -18,5 +18,32 @@ router.post('/percent', function(req, res) {
   res.send('' + precentNumber);
 });
 
+router.post('/sum', function(req, res) {
+  var number1 = parseFloat(req.body.number1);
+  var number2 = parseFloat(req.body.number2);
+  var result = number1 + number2;
+  res.send('' + result);
+});
+
+router.post('/sub', function(req, res) {
+  var number1 = parseFloat(req.body.number1);
+  var number2 = parseFloat(req.body.number2);
+  var result = number1 - number2;
+  res.send('' + result);
+});
+
+router.post('/multiply', function(req, res) {
+  var number1 = parseFloat(req.body.number1);
+  var number2 = parseFloat(req.body.number2);
+  var result = number1 * number2;
+  res.send('' + result);
+});
+
+router.post('/div', function(req, res) {
+  var number1 = parseFloat(req.body.number1);
+  var number2 = parseFloat(req.body.number2);
+  var result = number1 / number2;
+  res.send('' + result);
+});
 
 module.exports = router;
