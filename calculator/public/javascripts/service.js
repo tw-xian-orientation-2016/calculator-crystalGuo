@@ -6,3 +6,10 @@ Service.prototype.getNegative = function(number, callback) {
         callback(result);
     });
 }
+
+Service.prototype.getPercent = function(number, callback) {
+    $.post('/percent', {number: number}, function(result) {
+        callback(result);
+    });
+}
+
