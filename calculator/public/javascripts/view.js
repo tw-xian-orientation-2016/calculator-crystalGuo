@@ -26,6 +26,7 @@ function handleButton() {
     setSub();
     setMultiply();
     setDiv();
+    handleEqual();
 }
 
 function getNumber() {
@@ -126,42 +127,57 @@ function setDiv() {
             handleConnector(connector);
         }
 
-        connector = $(this).html();
+         connector = $(this).html();
+    });
+}
+
+function handleEqual() {
+    $('#equal').on('click', function() {
+        number.push(result);
+        result = '0';
+
+        if (connector != '' && number.length > 1) {
+            handleConnector2(connector);
+        }
+
+        connector = '';
     });
 }
 
 function handleConnector(connector) {
     if (connector === '+') {
-        service.getSum(number, function(sum) {
-            result = sum;
-            $('#screen').val(result);
-            number = [];
-            number.push(result);
-            result = '';
-        });
+        service.getSum(number, getResult);
     } else if (connector === '-') {
-        service.getSub(number, function(sub) {
-            result = sub;
-            $('#screen').val(result);
-            number = [];
-            number.push(result);
-            result = '';
-        });
+        service.getSub(number, getResult);
     } else if (connector === '÷') {
-        service.getDiv(number, function(div) {
-            result = div;
-            $('#screen').val(result);
-            number = [];
-            number.push(result);
-            result = '';
-        });
+        service.getDiv(number, getResult);
     } else if (connector === '×') {
-        service.getMultiply(number, function(multiply) {
-            result = multiply;
-            $('#screen').val(result);
-            number = [];
-            number.push(result);
-            result = '';
-        });
+        service.getMultiply(number, getResult);
     }
+}
+
+function getResult(num) {
+    result = num;
+    $('#screen').val(result);
+    number = [];
+    number.push(result);
+    result = '0';
+}
+
+function handleConnector2(connector) {
+    if (connector === '+') {
+        service.getSum(number, getResult2);
+    } else if (connector === '-') {
+        service.getSub(number, getResult2);
+    } else if (connector === '÷') {
+        service.getDiv(number, getResult2);
+    } else if (connector === '×') {
+        service.getMultiply(number, getResult2);
+    }
+}
+
+function getResult2(num) {
+    result = num;
+    $('#screen').val(result);
+    number = [];
 }
