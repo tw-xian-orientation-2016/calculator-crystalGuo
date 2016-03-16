@@ -12,4 +12,11 @@ router.post('/negation', function (req, res) {
   res.send('' + negativeNumber);
 });
 
+router.post('/percent', function(req, res) {
+  var number = parseFloat(req.body.number);
+  var precentNumber = number / 100;
+  res.send('' + precentNumber);
+});
+
+
 module.exports = router;
