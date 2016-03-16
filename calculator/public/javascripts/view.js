@@ -20,6 +20,7 @@ function init() {
 function handleButton() {
     getNumber();
     clearNumber();
+    setNegation();
 }
 
 function getNumber() {
@@ -45,5 +46,17 @@ function clearNumber() {
         $('#screen').val(result);
         number = [];
         connector = '';
+    });
+}
+
+function setNegation() {
+    $('#negation').on('click', function() {
+       if (result != '0') {
+           service.getNegative($('#screen').val(), function(number) {
+               result = number;
+               $('#screen').val(result);
+           });
+       }
+
     });
 }
