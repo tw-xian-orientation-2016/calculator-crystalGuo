@@ -21,6 +21,7 @@ function handleButton() {
     getNumber();
     clearNumber();
     setNegation();
+    setPercent();
 }
 
 function getNumber() {
@@ -57,6 +58,18 @@ function setNegation() {
                $('#screen').val(result);
            });
        }
+
+    });
+}
+
+function setPercent() {
+    $('#percent').on('click', function() {
+        if (result != '0') {
+            service.getPercent($('#screen').val(), function(number) {
+                result = number;
+                $('#screen').val(result);
+            });
+        }
 
     });
 }
