@@ -137,7 +137,7 @@ function handleEqual() {
         result = '0';
 
         if (connector != '' && number.length > 1) {
-            handleConnector2(connector);
+            handleConnectorWithEqual(connector);
         }
 
         connector = '';
@@ -164,19 +164,19 @@ function getResult(num) {
     result = '0';
 }
 
-function handleConnector2(connector) {
+function handleConnectorWithEqual(connector) {
     if (connector === '+') {
-        service.getSum(number, getResult2);
+        service.getSum(number, getResultWithEqual);
     } else if (connector === '-') {
-        service.getSub(number, getResult2);
+        service.getSub(number, getResultWithEqual);
     } else if (connector === '÷') {
-        service.getDiv(number, getResult2);
+        service.getDiv(number, getResultWithEqual);
     } else if (connector === '×') {
-        service.getMultiply(number, getResult2);
+        service.getMultiply(number, getResultWithEqual);
     }
 }
 
-function getResult2(num) {
+function getResultWithEqual(num) {
     result = num;
     $('#screen').val(result);
     number = [];
